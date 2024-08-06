@@ -1,7 +1,8 @@
-package main
+package rest_err
 
 import (
 	"fmt"
+	"github.com/joho/godotenv"
 	"log"
 	"os"
 )
@@ -9,8 +10,8 @@ import (
 func main() {
 	err := godotenv.Load()
 	if err != nil {
-		log.Fatal("Error loadding .env file")
+		log.Fatal("Error loading .env file")
 	}
 
-	fmt.Println(os.Getenv(("TEST")))
+	fmt.Println(os.Getenv("TEST"))
 }
