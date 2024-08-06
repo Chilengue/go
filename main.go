@@ -1,10 +1,11 @@
-package rest_err
+package main
 
 import (
-	"fmt"
-	"github.com/joho/godotenv"
 	"log"
-	"os"
+
+	"github.com/Chilengue/go.git/src/controller/routes"
+	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 )
 
 func main() {
@@ -13,5 +14,11 @@ func main() {
 		log.Fatal("Error loading .env file")
 	}
 
-	fmt.Println(os.Getenv("TEST"))
+	router := gin.Default()
+
+	routes.InitRoutes(&router.RouterGroup)
+
+	if err := router.Run("8000"); err != nil {
+		log.Fatal(err)
+	}
 }
